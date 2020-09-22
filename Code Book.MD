@@ -3,6 +3,7 @@ This is the codebook for the Data Cleaning Project.
 The variables in the final tidy data set are the following:
 
 subject: the ID number of the subject
+
 activity: string indicating the activity.
 
 Mean/standard deviation variables
