@@ -1,5 +1,9 @@
 This is the codebook for the Data Cleaning Project.
 
+The data was downloaded and unzipped from the UCI HAR Dataset. There were separate datasets for training data and test data, containing values, subject name, and activity name.
+The script bound them into one dataset, named all the variables appropriately, and selected only the variables which contained mean() and std().
+Further, the mean for each combination of subject-activity-value was computed and finally a tidy data set was made.
+
 The variables in the final tidy data set are the following:
 
 subject: the ID number of the subject
