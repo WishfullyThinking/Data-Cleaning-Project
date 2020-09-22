@@ -6,7 +6,7 @@ subject: the ID number of the subject
 
 activity: string indicating the activity.
 
-Mean/standard deviation variables
+Mean/standard deviation variables from the original dataset ONLY. Refer to original codebook for definitions. 
 
 tbodyaccmeanx
 
