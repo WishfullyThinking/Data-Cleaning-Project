@@ -38,17 +38,24 @@ mainset<-cbind(subjectdata, activity, valuedata)
 
 features<-read.table("./features.txt")
 names(mainset)[-(1:2)]<-features$V2
-names(mainset)[1]<-"Subject"
-names(mainset)[2]<-"Activity"
+names(mainset)[1]<-"subject"
+names(mainset)[2]<-"activity"
 
 ## We select ONLY the variables with "mean()"
 ## or "std()" in them. 
-sel<-select(mainset, c("Subject", "Activity")|contains(c("mean()", "std()")))
-sel<-sel[order(sel$Subject, sel$Activity),]
+sel<-select(mainset, c("subject", "activity")|contains(c("mean()", "std()")))
+sel<-sel[order(sel$subject, sel$activity),]
+
+##In this step, we remove all brackets and dashes from the file.
+names(sel)<-gsub("-", "", names(sel))
+names(sel)<-gsub("\\()", "", names(sel))
+names(sel)<-tolower (names(sel))
 
 
 ## In this last step, we melt the data and then 
 ## recast it to find the mean for each 
 ##subject-activity-measurement combination.
-melted <- melt(sel, id = c("Subject", "Activity"))
-tidyData <- dcast(melted, Subject + Activity ~ variable, mean)
+melted <- melt(sel, id = c("subject", "activity"))
+tidyData <- dcast(melted, subject + activity ~ variable, mean)
+
+write.table(tidyData, "tidyData.txt", quote = FALSE)
